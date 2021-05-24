@@ -111,11 +111,20 @@
 .info-block
     &__inner
         @include FlexStart
+    &__content
+        max-width: 460px
+        width: 100%
     &__heading
         margin-bottom: 50px
     &__text
+        max-width: 460px
+        width: 100%
         margin-bottom: 60px
         color: $text
+    &__subtext
+        margin-bottom: 45px
+        color: $white
+
 //info-block end
 
 //watch-now start
@@ -150,7 +159,7 @@
         line-height: 16px
         padding: 5px 8px
         color: $white
-        background-color: $background
+        background-color: $black
         border-radius: 4px
     &__item-date
         margin-top: 5px
@@ -343,21 +352,7 @@
     &__text
         max-width: 391px
         width: 100%
-    &__list-item
-        position: relative
-        display: flex
-        align-items: center
-        color: $white
-        &:not(:last-child)
-            margin-bottom: 15px
-        &::before
-            content: ""
-            margin-right: 20px
-            background-image: url(../images/icons/check-mark.svg)
-            width: 17px
-            height: 15px
-            background-size: contain
-            background-repeat: no-repeat
+
     &__images
         position: absolute
         max-width: 728px
@@ -382,6 +377,22 @@
         bottom: 0
         right: -95px
 //monetize end
+.info-block__list
+    &-item
+        position: relative
+        display: flex
+        align-items: baseline
+        color: $white
+        &:not(:last-child)
+            margin-bottom: 15px
+        &::before
+            content: ""
+            margin-right: 20px
+            background-image: url(../images/icons/check-mark.svg)
+            width: 17px
+            height: 15px
+            background-size: contain
+            background-repeat: no-repeat
 //partners start
 .partners
     padding: 150px 0
@@ -509,7 +520,7 @@
         width: 100%
         margin-bottom: 60px
     &-card
-        background-color: $background
+        background-color: $black
         border-radius: 22px
         overflow: hidden
         box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
@@ -986,16 +997,384 @@
     &-glitch::before,
         content: ""
         position: absolute
-        left: 0
-        top: 0
-        right: 0
-        bottom: 0
+
+        top: 0px
+        left: 0px
+        width: 100%
+        height: 100%
         background: inherit
         transform: translateX(10px)
         animation-duration: 3s
         animation-timing-function: linear
-        animation-
+        animation-iteration-count: infinite
+        animation-fill-mode: forwards
+        background-blend-mode: difference
     &-glitch::after
-        animation-name: glitchAnim1
+        animation-name: glitch-anim-1
     &-glitch::before
-        animation-name: glitchAnim2
+        animation-name: glitch-anim-2
+@keyframes glitch-anim-1
+    0%
+        opacity: 1
+        -webkit-transform: translate3d(3px, 0, 0)
+        transform: translate3d(3px, 0, 0)
+        -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%)
+        clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%)
+    2%
+        -webkit-clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%)
+        clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%)
+    4%
+        -webkit-clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%)
+        clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%)
+    6%
+        -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%)
+        clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%)
+    8%
+        -webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%)
+        clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%)
+    10%
+        -webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%)
+        clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%)
+    12%
+        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%)
+        clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%)
+    14%
+        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%)
+        clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%)
+    16%
+        -webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%)
+        clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%)
+    18%
+        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%)
+        clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%)
+    20%
+        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%)
+        clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%)
+    21.9% 
+        opacity: 1
+        -webkit-transform: translate3d(3px, 0, 0)
+        transform: translate3d(3px, 0, 0)
+    22%, 100%
+        opacity: 0
+        -webkit-transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0)
+        -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0)
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0)
+@keyframes glitch-anim-2
+    0%
+        opacity: 1
+        -webkit-transform: translate3d(calc(-1 * 3px), 0, 0)
+        transform: translate3d(calc(-1 * 3px), 0, 0)
+        -webkit-clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%)
+        clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%)
+    3%
+        -webkit-clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%)
+        clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%)
+    5%
+        -webkit-clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%)
+        clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%)
+    7%
+        -webkit-clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%)
+        clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%)
+    9%
+        -webkit-clip-path: polygon(0 40%, 100% 40%, 100% 40%, 0 40%)
+        clip-path: polygon(0 40%, 100% 40%, 100% 40%, 0 40%)
+    11%
+        -webkit-clip-path: polygon(0 52%, 100% 52%, 100% 59%, 0 59%)
+        clip-path: polygon(0 52%, 100% 52%, 100% 59%, 0 59%)
+    13%
+        -webkit-clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%)
+        clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%)
+    15%
+        -webkit-clip-path: polygon(0 75%, 100% 75%, 100% 75%, 0 75%)
+        clip-path: polygon(0 75%, 100% 75%, 100% 75%, 0 75%)
+    17%
+        -webkit-clip-path: polygon(0 65%, 100% 65%, 100% 40%, 0 40%)
+        clip-path: polygon(0 65%, 100% 65%, 100% 40%, 0 40%)
+    19%
+        -webkit-clip-path: polygon(0 45%, 100% 45%, 100% 50%, 0 50%)
+        clip-path: polygon(0 45%, 100% 45%, 100% 50%, 0 50%)
+    20%
+        -webkit-clip-path: polygon(0 14%, 100% 14%, 100% 33%, 0 33%)
+        clip-path: polygon(0 14%, 100% 14%, 100% 33%, 0 33%)
+    21.9% 
+        opacity: 1
+        -webkit-transform: translate3d(calc(-1 * 3px), 0, 0)
+        transform: translate3d(calc(-1 * 3px), 0, 0)
+    22%, 100%
+        opacity: 0
+        -webkit-transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0)
+        -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0)
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0)
+
+// @keyframes glitchAnim1
+//     0%, 25.1%, 100%
+//         clip-path: polygon(0 0,0 0, 0 0, 0 0)
+//     4%
+//         clip-path: polygon(0 0,100% 0, 100% 10%, 0 10%)
+//     5%
+//         clip-path: polygon(0 0,100% 0, 100% 0, 0 0)
+//     9%
+//         clip-path: polygon(0 20%,100% 20%, 100% 30%, 0 30%)
+//     10%
+//         clip-path: polygon(0 20%,100% 20%, 100% 20%, 0 20%)
+//     14%
+//         clip-path: polygon(0 40%,100% 40%, 100% 50%, 0 50%)
+//     15%
+//         clip-path: polygon(0 40%,100% 40%, 100% 40%, 0 40%)
+//     19%
+//         clip-path: polygon(0 60%,100% 60%, 100% 70%, 0 70%)
+//     20%
+//         clip-path: polygon(0 60%,100% 60%, 100% 60%, 0 60%)
+//     24%
+//         clip-path: polygon(0 80%,100% 80%, 100% 90%, 0 90%)
+//     25%
+//         clip-path: polygon(0 80%,100% 80%, 100% 80%, 0 80%)
+
+// @keyframes glitchAnim2
+//     0%, 25.1%, 100%
+//         clip-path: polygon(0 0,0 0, 0 0, 0 0)
+
+//     4%
+//         clip-path: polygon(0 80%,100% 80%, 100% 90%, 0 90%)
+//         background-color: rgba(0,0,255, 0.2)
+//     5%
+//         clip-path: polygon(0 80%,100% 80%, 100% 80%, 0 80%)
+//         background-color: transparent
+//     9%
+//         clip-path: polygon(0 60%,100% 60%, 100% 70%, 0 70%)
+//     10%
+//         clip-path: polygon(0 60%,100% 60%, 100% 60%, 0 60%)
+//     14%
+//         clip-path: polygon(0 40%,100% 40%, 100% 50%, 0 50%)
+//     15%
+//         clip-path: polygon(0 40%,100% 40%, 100% 40%, 0 40%)
+//     19%
+//         clip-path: polygon(0 20%,100% 20%, 100% 30%, 0 30%)
+//     20%
+//         clip-path: polygon(0 20%,100% 20%, 100% 20%, 0 20%)
+//     24%
+//         clip-path: polygon(0 0,100% 0, 100% 10%, 0 10%)
+//     25%
+//         clip-path: polygon(0 0,100% 0, 100% 0, 0 0)
+
+//make-money start
+.make-money
+    &__heading
+        margin-bottom: 40px
+    &__text
+        max-width: 331px
+        width: 100%
+        margin-bottom: 40px
+    &__content
+        max-width: 377px
+        width: 100%
+    &__list
+        margin-bottom: 60px
+    &__img
+        max-width: 660px
+        width: 100%
+        margin-right: -20px
+
+//make-money end
+//property start
+.property
+    margin: 140px 0 150px
+    &__inner
+        display: flex
+        align-items: flex-end
+        justify-content: space-between
+    &__text
+        max-width: 343px
+    &__items
+        display: flex
+        align-items: flex-end
+    &__item
+        position: relative
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        padding: 40px 25px
+        background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+        box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+        border-radius: 20px
+        width: 175px
+        overflow: hidden
+        &::before
+            content: ""
+            position: absolute
+            left: 0
+            bottom: 0
+            right: 0
+            width: 100%
+            height: 0
+            transition: all .5s cubic-bezier(0.4, 0, 1, 1)
+        &:hover::before
+            height: 100%
+    &__item:first-child
+        height: 232px
+        &::before
+            background-color: $purple
+    &__item:nth-child(2)
+        height: 437px
+        margin: 0 40px
+        &::before
+            background-color: $pink
+    &__item:nth-child(3)
+        height: 333px
+        &::before
+            background-color: $orange
+    &__item-content
+        transform: rotate(-90deg)
+
+//property end
+//advanced start
+.advanced
+    padding: 112px 0 230px
+    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+    .tabs
+        margin-bottom: 35px
+    &-tab
+        padding: 15px 27px 13px
+        background-color: rgba(#FFFFFF, 0.1)
+        border-radius: 100px
+        font-size: 13px
+        font-weight: 500
+        cursor: pointer
+        transition: all .3s
+        &:not(:last-child)
+            margin-right: 13px
+        &.active,
+        &:hover
+            background-color: $purple
+            box-shadow: 0px 8px 8px rgba(156, 66, 245, 0.122)
+    &__btn span::before
+        top: 3px
+        background-image: url(../images/icons/play.svg)
+        background-size: contain
+        width: 17px
+        height: 17px
+    &-conetnt__text
+        max-width: 303px
+        width: 100%
+.advanced-tabs
+    .tab-item
+        position: relative
+.tab-tech__img
+    margin-left: -10px
+.tab-tech__img-position
+    position: absolute
+    bottom: -81px
+    right: -51px
+    transform: scale(1)
+    transition: all .3s
+    &:hover
+        transform: scale(1.03)
+//advanced end
+//subscribe start
+.subscribe
+    &__inner
+        padding: 90px 0px 90px 100px
+        margin-top: -70px
+        margin-bottom: 150px
+        background: $accentBg
+        border-radius: 20px
+        box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+        position: relative
+        z-index: 2
+        overflow: hidden
+        &::before
+            content: ""
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            background-image: url(../images/subscribe-bg2.svg)
+            background-size: cover
+            background-repeat: no-repeat
+            background-position: center center
+            z-index: -1
+
+.carusel
+    width: 460px
+    padding: -15px
+    &__item
+        display: flex
+        flex-direction: column
+        align-items: center
+        text-align: center
+        padding: 59px 25px 64px
+        margin: 0px 30px 25px 15px
+        width: 360px
+        background-color: #fff
+        box-shadow: 8px 8px 24px #702FCC
+        border-radius: 12px
+    &__icon
+        display: flex
+        align-items: center
+        justify-content: center
+        margin: 0 auto
+        margin-bottom: 24px
+        width: 73px
+        height: 73px
+        border-radius: 50%
+    &__heading
+        color: $black
+        font-weight: 600
+        margin-bottom: 15px
+    &__text
+        width: 230px
+        margin: 0 auto
+        font-weight: 500
+        font-size: 16px
+        line-height: 24px
+        color: rgba($black, .4)
+    &__item.slick-slide
+        transform: translateX(-40px)
+        opacity: 0.2
+        cursor: pointer
+        transition: all .3s
+        &:hover
+            opacity: 1
+    &__item.slick-active
+        transform: translateX(-30px)
+        opacity: 1
+
+//subscribe end
+//faq start
+.faq
+    margin-bottom: 150px
+    &__heading
+        max-width: 370px
+        width: 100%
+    &__items
+        margin-top: 50px
+.faq-item
+    padding: 40px 0
+    border-top: 1px solid rgba(#E0E0FF, 0.1)
+    &__button
+        @include FlexBetween
+        cursor: pointer
+    &__heading
+        font-weight: 600
+    &__content
+        display: none
+    &__text
+        margin-top: 25px
+        max-width: 680px
+        width: 100%
+        font-weight: 500
+        color: $text
+    &__arrow
+        transition: all .2s
+    &.show .faq-item__arrow
+        transform: rotate(-90deg)
+        opacity: 0.3
+
+        &:hover
+            opacity: 1
+    &.show .faq-item__button:hover .faq-item__arrow
+        opacity: 1
+//faq end

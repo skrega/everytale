@@ -59,19 +59,22 @@ p
 	display: flex
 	align-items: center
 
-.select-btn
-	padding: 25px 67px 24px 33px
-	position: relative
-	background: linear-gradient(135deg, #00BBFF 0%, #9C42F5 53%, #5D2DE1 100%)
-	border-radius: 12px
+.btn
 	display: inline-block
+	padding: 22px 33px 21px 33px
+	position: relative
+	border-radius: 12px
 	cursor: pointer
+
+.select-btn
+	padding: 22px 67px 21px 33px
+	background: linear-gradient(135deg, #00BBFF 0%, #9C42F5 53%, #5D2DE1 100%)
 	color: #fff
+	box-shadow: 0px 8px 8px rgba(156, 66, 245, 0.122)
 	&::before
 		content: ""
 		position: absolute
 		background: linear-gradient(135deg, #5D2DE1 0%, #9C42F5 53%, #00BBFF 100%)
-		//background: linear-gradient(135deg, #00BBFF 0%, #9C42F5 53%, #5D2DE1 100%)
 		box-shadow: 0px 8px 8px rgba(156, 66, 245, 0.122)
 		border-radius: 12px
 		width: 100%
@@ -95,9 +98,29 @@ p
 		top: 4px
 		background-image: url(../images/icons/arrow-right.svg)
 		background-repeat: no-repeat
-		background-size: cover
+		background-size: contain
 		width: 18px
 		height: 13px
+
+.btn_white
+	display: inline-flex
+	align-items: center
+	background: #fff
+	color: $purple
+	box-shadow: 0px 8px 8px rgba(156, 66, 245, 0.122)
+	transition: all .3s
+	&.disabled
+		opacity: 0.4
+	&:hover
+		background: rgba(#FFFFFF, 0.2)
+		color: #fff
+		svg path
+			fill: #fff
+
+.btn_white svg
+	margin-left: 22px
+	path
+		transition: fill .3s
 
 .square-btn
 	position: relative
@@ -215,3 +238,5 @@ p
 .slider-arrows
 	@include FlexBetween
 	width: 114px
+.slick-slide
+	outline: none
