@@ -1,13 +1,49 @@
 html,
 body
 	height: 100%
+
+body
+	--color-bg: #212429
+	--color-title: #fff
+	--color-text: rgba(224,224,255,0.6)
+	--card-bg: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+	--box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+	--color-card-heading: #E0E0FF
+	--section-bg: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+	--input-bg: rgba(224,224,255,0.1)
+	--input-bg-hover: rgba(224,224,255,0.16)
+	--form-bg: #2D2F33
+	--select-bg: rgba(224,224,255,0.1)
+	--select-bg-hover: rgba(224,224,255,0.16)
+	--list-bg: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+	--marquee-gradient: linear-gradient(to bottom right, #2c2e31, #22252a)
+	--seletc-bg: rgba(224,224,225, 0.1)
+	--select-dropdown: #40424B
+
+body.theme--ligth
+	--color-bg: #fff
+	--color-title: #212429
+	--color-text: rgba( 33, 36, 41, 0.7)
+	--card-bg: #fff
+	--box-shadow: 8px 8px 35px rgba(54, 25, 119, 0.11)
+	--color-card-heading: #212429
+	--section-bg: #F3F3FC
+	--input-bg: #F3F3FC
+	--input-bg-hover: #ECECF9
+	--form-bg: #fff
+	--seletc-bg: #F3F3FC
+	--seletc-bg-hover: #ECECF9
+	--list-bg: #fff
+	--marquee-gradient: linear-gradient(to bottom right, #fff, #fff)
+	--select-dropdown: #ECECF9
 body
 	font-family: 'Montserrat', sans-serif
-	background-color: #212429
-	color: #fff
+	background-color: var(--color-bg)
+	color: var(--color-title)
 	font-weight: 600
 	font-size: 18px
 	line-height: 30px
+	overflow-x: hidden
 
 .wrapper
 	display: flex
@@ -27,7 +63,7 @@ body
   padding: 0 15px
 
 .inner
-	background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+	background: var(--section-bg)
 
 h1
 	font-weight: 800
@@ -60,7 +96,7 @@ textarea
 
 .link
 	font-weight: 500
-	color: #fff
+	color: var(--color-title)
 	text-decoration: underline
 	opacity: 1
 
@@ -96,7 +132,7 @@ textarea
 		pointer-events: none
 
 .select-btn
-	padding: 22px 67px 21px 33px
+	padding: 22px 33px 21px 33px
 	background: linear-gradient(135deg, #00BBFF 0%, #9C42F5 53%, #5D2DE1 100%)
 	color: #fff
 	box-shadow: 0px 8px 8px rgba(156, 66, 245, 0.122)
@@ -116,6 +152,16 @@ textarea
 		transition: all .3s ease-in-out
 	&:hover::before
 		opacity: 1
+	.btn-arrow
+		margin-right: 28px
+
+body.theme--ligth .btn-transparent
+	border: 1px solid #9191A5
+	&:hover
+		background-color: rgba(#9191A5, 0.2)
+		border-color: transparent
+	.btn-arrow::before
+		filter: invert(100%)
 
 .btn-transparent
 	padding: 22px 67px 21px 33px
@@ -149,15 +195,24 @@ textarea
 .buttons-group .select-btn
 	margin-right: 30px
 
+body.theme--ligth .square-btn
+	&::before
+		display: none
+	&:hover
+		box-shadow: 8px 8px 35px rgba(54, 25, 119, 0.18)
+	svg path
+		fill: $black
+
 .square-btn
 	position: relative
 	@include centerFlex
 	width: 48px
 	height: 48px
-	box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+	box-shadow: var(--box-shadow)
 	border-radius: 12px
 	overflow: hidden
-	background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+	background: var(--card-bg)
+	transition: all .3s
 	span
 		position: relative
 		@include centerFlex
@@ -209,11 +264,14 @@ textarea
 
 .card
 	position: relative
-	background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
-	box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+	background: var(--card-bg)
+	box-shadow: var(--box-shadow)
 	border-radius: 12px
 	padding: 30px
 	overflow: hidden
+	&:hover .card__text,.card__heading
+		color: var(--color-title)
+
 	&_small
 		width: 260px
 	&_larg
@@ -228,12 +286,18 @@ textarea
 	&__heading
 		font-size: 24px
 		line-height: 40px
+		color: var(--color-title)
+	&__supheading
+		color: $purple
+		font-weight: 500
+		font-size: 12px
+		line-height: 20px
 	&__text
 		margin-top: 15px
 		font-weight: 500
 		font-size: 16px
 		line-height: 24px
-		color: $text
+		color: var(--color-text)
 		transition: color .3s
 	&__icon-bottom
 		position: relative
@@ -244,8 +308,6 @@ textarea
 		@include centerFlex
 		transition: all .3s ease-out
 		z-index: 3
-	&:hover .card__text,.card__heading
-		color: #fff
 
 .card.center
 	display: flex
@@ -280,24 +342,6 @@ textarea
 
 .slick-slide
 	outline: none
-
-.user.blue-bg
-	width: 115px
-	height: 115px
-.user.pink-bg
-	width: 74px
-	height: 74px
-.user.white-bg
-	width: 124px
-	height: 124px
-	background-color: rgba(#FFFFFF, 0.2)
-.user.purple-bg
-	width: 142px
-	height: 142px
-.user.orange-bg
-	width: 141px
-	height: 141px
-.user.grey-bg
-	width: 141px
-	height: 141px
-	background-color: rgba(#fff, 0.1)
+body.theme--ligth
+	.user.white-bg, .user.grey-bg
+		background-color: #fff

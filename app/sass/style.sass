@@ -2,8 +2,16 @@
 @import fonts
 @import mixin
 @import reset
-@import libs
 @import global
+
+body.theme--ligth
+    .svg--light
+        fill: $black
+    .header__btn:hover
+        background: #fff
+        box-shadow: 8px 8px 35px rgba(54, 25, 119, 0.18)
+    .header__btn-theme svg path
+        fill: $purple
 .header
     position: relative
     z-index: 2
@@ -20,7 +28,7 @@
         margin-left: 50px
         display: flex
         align-items: center
-    &__menu-list:not(:last-child)
+    &__menu-list:not(:first-child)
         margin-right: 50px
     &__menu-link
         font-size: 16px
@@ -33,8 +41,8 @@
     &__btn-theme
         margin: 0 24px 0 34px
     &__btn
-        background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
-        box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+        background: var(--card-bg)
+        box-shadow: var(--box-shadow)
         border-radius: 12px
         padding: 10px 24px
         transition: all .3s
@@ -43,11 +51,77 @@
     &__btn.disabled
         opacity: 0.4
         pointer-events: none
+body.theme--ligth
+    .header__menu-list.has-dropdown
+        &.opened
+            background: #ECECF9
+            .header__menu-link
+                color: rgba(#212429, 0.4)
+            span:after
+                opacity: 0.4
+        ul
+            background: #ECECF9
+        span:after
+            filter: invert(100%)
+
+.header__menu-list.has-dropdown
+    padding-right: 30px
+    margin-right: 10px
+    cursor: pointer
+    border-top-right-radius: 8px
+    border-top-left-radius: 8px
+    transition: all .4s
+    span
+        position: relative
+        padding-right: 20px
+        padding-left: 20px
+        &:after
+            content: ""
+            display: block
+            position: absolute
+            top: 8px
+            right: 0
+            width: 9px
+            height: 6px
+            background-image: url('../images/icons/arrow.svg')
+            background-repeat: no-repeat
+            background-size: contain
+            transition: .2s
+    &.opened > span:after
+        transform: rotate(180deg)
+    &.opened
+        background: #40424B
+        padding-top: 8px
+
+    ul
+        display: none
+        position: absolute
+        list-style: none
+        padding: 0px 21px 10px 20px
+        background: #40424B
+        border-bottom-left-radius: 8px
+        border-bottom-right-radius: 8px
+    li
+        margin-top: 5px
+        font-size: 15px
+
+        transition: all .3s
+
+        &:hover
+            color: rgba(#fff, 0.4 )
+body.theme--ligth
+    .lang-switcher.active
+        background: #ECECF9
+        .lang-switcher__list
+            background: #ECECF9
+    .lang-switcher::before
+        filter: invert(100%)
 
 .lang-switcher
     position: relative
     padding: 14px 27px 10px 20px
     height: 100%
+    cursor: pointer
     &::before
         content: ""
         position: absolute
@@ -59,11 +133,13 @@
         top: 24px
         right: 5px
         transition: all .3s
+
 .lang-switcher.active
     background: #40424B
     border-radius: 8px
     &::before
         transform: rotate(180deg)
+        opacity: 0.4
 
     .dropdown-title
         opacity: 0.4
@@ -76,6 +152,7 @@
         transition: opacity .3s
         &:hover
             opacity: 0.4
+
 .lang-switcher__list
     opacity: 0
     display: none
@@ -87,13 +164,144 @@
     border-radius: 8px
 
 //header end
+body.theme--ligth .broadcast__img
+    max-width: 700px
+    width: 100%
+    height: auto
+.broadcast
+    position: relative
+    padding-bottom: 210px
+    &__content
+        position: relative
+        z-index: 3
+
+.broadcast__img
+    width: 820px
+    height: 614px
+    position: absolute
+    right: 80px
+    top: -60px
+    z-index: 0
+    border-radius: 18px
+    overflow: hidden
+    img
+        width: 100%
+        height: 100%
+.surface
+    width: 100%
+    height: 100%
+
+.scene
+    position: absolute
+    top: 0px
+    right: 0px
+    padding-left: 40px
+    padding-bottom: 20px
+    width: 100%
+    height: 100%
+
+.surface svg
+    position: absolute
+
+.promo-surface__top svg
+    top: -85%
+    right: 0
+
+.promo-surface__purple svg
+    bottom: -14%
+    right: 22%
+
+.promo-surface__orange svg
+    bottom: 20%
+    right: 49%
+
+.surface-top-purple svg
+    top: -10px
+    bottom: -88px
+
+.surface-top-orange svg
+    top: 3%
+    left: 37%
+
+.surface-bottom-purple svg
+    bottom: -10%
+    right: 25%
+
+.surface-banner-purple svg
+    bottom: -33%
+    left: 40%
+
+.surface-banner-orange svg
+    top: 8%
+    left: -1%
+.surface-orange_big svg
+    top: 6%
+    left: -11%
+
+.surface-purple_small svg
+    top: 40%
+    left: 6%
+
+.surface-bottom-orange svg
+    bottom: -44%
+    right: 25%
+
+.surface-bottom-purple__small svg
+    bottom: -16%
+    right: 6%
+
+.surface-bottom-orange__small svg
+    bottom: 10%
+    right: -4%
+
+.surface-banner-orange_big svg
+    right: -4%
+    top: 4%
+    z-index: 1
+
+#broadcast-paralax_orange
+    position: absolute
+    right: 0
+    left: 0
+    bottom: -100px
+    z-index: 3
+    svg
+        margin-left: 39%
+
+#broadcast-paralax_purple
+    position: absolute
+    right: 0
+    left: 0
+    overflow: hidden
+    padding-top: 50px
+    padding-bottom: 40px
+    margin-bottom: -140px
+    z-index: 2
+// .broadcast__surface_top
+//     margin-left: auto
+// .broadcast-surface_orange
+//     position: absolute
+//     right: 0
+//     margin: 0 auto
+//     z-index: 3
+
+.broadcast-surface_purple
+    position: absolute
+    right: 0
+    left: 0
+    overflow: hidden
+    z-index: 3
+    margin-left: 60%
 //promo start
 .promo
+    position: relative
     &__inner
         margin-top: 80px
     &__content
         max-width: 560px
         width: 100%
+        position: relative
+        z-index: 3
     &__text
         margin: 50px 0 62px
         max-width: 360px
@@ -101,7 +309,7 @@
         font-weight: 500
         font-size: 24px
         line-height: 40px
-        color: $text
+        color: var(--color-text)
     &__text-short
         max-width: 330px
         width: 100%
@@ -110,6 +318,7 @@
 
 //block start
 .block
+    position: relative
     &-center
         @include centerFlex
         flex-direction: column
@@ -126,16 +335,19 @@
         max-width: 460px
         width: 100%
         margin-bottom: 60px
-        color: $text
+        font-weight: 500
+        color: var(--color-text)
     &__subtext
         margin-bottom: 45px
-        color: $white
+        color: var(--color-card-heading)
 
 //block end
 
 //watch-now start
 .watch-now
-    margin: 236px 0 150px
+    position: relative
+    margin: 0px 0 150px
+    z-index: 2
     &__inner
         display: flex
         align-items: center
@@ -172,7 +384,7 @@
         font-weight: 500
         font-size: 16px
         line-height: 24px
-        color: $text
+        color: var(--color-text)
     &__arrows
         margin-bottom: 60px
 
@@ -207,9 +419,15 @@
     &__item:hover:nth-child(4)
         background: $pink
     &-heading
-        color: $white
+        color: var(--color-card-heading)
+.advantages__item:hover
+    .advantages__item-heading,
+    .advantages__item-text,
+        color: #fff
 //advantages end
 //map start
+body.theme--ligth .map
+    background-image: url(../images/map-white.svg)
 .map
     margin-top: 150px
     position: relative
@@ -265,14 +483,14 @@
     &__item:nth-child(4)::before
         background: radial-gradient(75.9% 75.9% at 26.5% 23%, #C32DE1 0%, #F54562 54.1%, #FF5E00 100%)
     &__item:hover .map__item-heading
-        color: #fff
+        color: var(--color-title)
     &__item-heading, svg
         position: relative
         z-index: 2
         transition: all 3s
     &__item-heading
         margin: 20px 0 15px
-        color: $white
+        color: var(--color-card-heading)
         transition: color .3s
 .map__inner
     position: relative
@@ -282,10 +500,12 @@
     margin: 59px auto 151px
     &-user
         border-radius: 50%
+        padding: 10px
         @include centerFlex
         overflow: hidden
         transition: all .3s
         z-index: 2
+
 .map__inner-top
     height: 100px
     & .map__inner-user:first-child
@@ -295,6 +515,9 @@
         width: 74px
         height: 74px
         box-shadow: 0px 8px 15px rgba(245, 66, 130, 0.3)
+        padding: 7px
+        &:hover
+            padding: 10px
 
     & .map__inner-user:nth-child(2)
         position: absolute
@@ -302,12 +525,13 @@
         top: 10px
         width: 124px
         height: 124px
+        padding: 0
+        &:hover
+            padding: 5px
 
 .map__inner-user:hover
-    padding: 5px
-    img
-        width: 110%
-        height: 110%
+    padding: 15px
+
 .map__inner-middle
     display: flex
     justify-content: space-between
@@ -320,16 +544,66 @@
         height: 142px
         background-color: $purple
         position: relative
+        position: absolute
+        left: 0
     & .map__inner-user:nth-child(2)
         width: 115px
         height: 115px
         background-color: $blue
         box-shadow: 0px 8px 15px rgba(66, 105, 245, 0.3)
+        position: absolute
+        left: 40%
 
     & .map__inner-user:nth-child(3)
         width: 141px
         height: 141px
         box-shadow: 0px 8px 15px rgba(245, 109, 66, 0.3)
+        position: absolute
+        right: 0
+
+.user.blue-bg
+    width: 115px
+    height: 115px
+    &:hover
+        width: 120px
+        height: 120px
+
+.user.pink-bg
+    width: 74px
+    height: 74px
+    &:hover
+        width: 80px
+        height: 80px
+
+.user.white-bg
+    width: 124px
+    height: 124px
+    background-color: rgba(#FFFFFF, 0.2)
+    &:hover
+        width: 130px
+        height: 130px
+
+.user.purple-bg
+    width: 142px
+    height: 142px
+    &:hover
+        width: 147px
+        height: 147px
+
+.user.orange-bg
+    width: 141px
+    height: 141px
+    &:hover
+        width: 146px
+        height: 146px
+
+.user.grey-bg
+    width: 141px
+    height: 141px
+    background-color: rgba(#fff, 0.1)
+    &:hover
+        width: 146px
+        height: 146px
 
 .map__inner-bottom .map__inner-user
     position: absolute
@@ -338,6 +612,12 @@
     background-color: rgba(#fff, 0.2)
     right: 270px
     bottom: -10px
+    &:hover
+        width: 113px
+        height: 113px
+
+body.theme--ligth .map__line
+    filter: invert(100%)
 
 .map__line
     position: absolute
@@ -353,6 +633,7 @@
 .map__line:nth-child(3)
     top: 30px
     right: 90px
+
 .map__line:nth-child(4)
     right: 107px
     bottom: 43px
@@ -360,10 +641,12 @@
 //map end
 //monetize start
 .monetize
-    margin: 300px 0 150px
+    position: relative
+    padding: 300px 0 150px
+    overflow: hidden
     &__inner
         position: relative
-
+        z-index: 3
     &__heading
         width: 260px
     &__text
@@ -393,13 +676,50 @@
     &__img:nth-child(3)
         bottom: 0
         right: -95px
+
+#monetize-surface_bottom
+    position: absolute
+    z-index: 1
+    right: 0
+    left: 0
+    height: 150px
+    overflow: hidden
+    svg
+        margin-left: 52%
+
+#monetize-surface_orange
+    position: absolute
+    top: 100px
+    right: 0
+    left: 0
+    svg
+        margin-left: 26%
+
+#monetize-surface_purple
+    position: absolute
+    top: 90px
+    left: 0
+    right: 0px
+    z-index: 1
+    svg
+        margin-left: -9%
+
+#monetize-surfaces
+    position: absolute
+    top: 80px
+    left: -90px
 //monetize end
+.surface_bottom
+    position: absolute
+    top: 20px
+    left: 50px
+
 .block-list
     &__item
         position: relative
         display: flex
         align-items: baseline
-        color: $white
+        color: var(--color-card-heading)
         &:not(:last-child)
             margin-bottom: 15px
         &::before
@@ -411,9 +731,16 @@
             background-size: contain
             background-repeat: no-repeat
 //partners start
+body.theme--ligth
+    .partners__item img
+        filter: invert(100%)
+    .tab:hover
+        color: $black
+        background: $greyLight
 .partners
     padding: 150px 0 100px
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+    background: var(--section-bg)
+
     &__head
         display: flex
         align-items: center
@@ -427,18 +754,21 @@
         display: flex !important
         align-items: center
         justify-content: center
+        margin-right: 117px
         &:hover
             opacity: 1
     &__slider
         width: 100%
+
 .partners__slider
     .slider-btn
         top: -90px
         right: -1196px
-
     .slider-btn__right
         top: -265px
         right: -1262px
+    &-arrows
+        margin-left: 20px
 
 .slick-arrow.slick-hidden
     display: none
@@ -457,14 +787,14 @@
     padding: 9px 30px
     color: #fff
     border-radius: 52px
-    color: $text
+    color: var(--color-text)
     text-align: center
     cursor: pointer
     transition: all .3s
     &:not(:last-child)
         margin-right: 30px
     &:hover
-        color: $white
+        color: var(--color-card-heading)
         background: rgba(#fff, 0.1)
     &.active
         color: #fff
@@ -476,40 +806,28 @@
 
 //partners end
 //whom start
+
 .whom
     margin-top: 120px
+    .slick-list
+        margin: 0 -40px
     &__head
         @include FlexBetween
     &__slide
-        display: grid !important
-        display: -ms-grid !important
-        grid-gap: 40px
-        -ms-grid-gap: 40px
-        grid-template-columns: 1fr 1fr 1fr
-        -ms-grid-template-columns: 1fr 1fr 1fr
+        // display: grid !important
+        // display: -ms-grid !important
+        // grid-gap: 40px
+        // -ms-grid-gap: 40px
+        // grid-template-columns: 1fr 1fr 1fr
+        // -ms-grid-template-columns: 1fr 1fr 1fr
         padding-bottom: 50px
-    &-card:nth-child(1) .card__icon-bottom
-        background-color: $purple
-        box-shadow: 8px 8px 24px rgba(156, 66, 245, 0.25)
-    &-card:nth-child(2) .card__icon-bottom
-        background-color: $blue
-        box-shadow: 8px 8px 24px rgba(66, 105, 245, 0.25)
-    &-card:nth-child(3) .card__icon-bottom
-        background-color: $pink
-        box-shadow: 8px 8px 24px rgba(245, 66, 130, 0.25)
-    &-card:nth-child(4) .card__icon-bottom
-        background-color: $orange
-        box-shadow: 8px 8px 24px rgba(245, 109, 66, 0.25)
-    &-card:nth-child(5) .card__icon-bottom
-        background-color: $green
-        box-shadow: 8px 8px 24px rgba(66, 245, 116, 0.25)
-    &-card:nth-child(6) .card__icon-bottom
-        background-color: $red
-        box-shadow: 8px 8px 24px rgba(245, 66, 66, 0.25)
+        display: flex !important
+        flex-wrap: wrap
     &-card
         display: flex
         flex-direction: column
         justify-content: space-between
+        margin: 20px
         transition: all .3s
         &::after,
         &::before
@@ -537,16 +855,40 @@
             height: 105px
             z-index: 2
             transition-delay: .15s
-        &:hover .card__icon-bottom
-            background-color: rgba(#fff, 0.1)
 
+    &-card:nth-child(1) .card__icon-bottom
+        background-color: $purple
+        box-shadow: 8px 8px 24px rgba(156, 66, 245, 0.25)
+    &-card:nth-child(2) .card__icon-bottom
+        background-color: $blue
+        box-shadow: 8px 8px 24px rgba(66, 105, 245, 0.25)
+    &-card:nth-child(3) .card__icon-bottom
+        background-color: $pink
+        box-shadow: 8px 8px 24px rgba(245, 66, 130, 0.25)
+    &-card:nth-child(4) .card__icon-bottom
+        background-color: $orange
+        box-shadow: 8px 8px 24px rgba(245, 109, 66, 0.25)
+    &-card:nth-child(5) .card__icon-bottom
+        background-color: $green
+        box-shadow: 8px 8px 24px rgba(66, 245, 116, 0.25)
+    &-card:nth-child(6) .card__icon-bottom
+        background-color: $red
+        box-shadow: 8px 8px 24px rgba(245, 66, 66, 0.25)
     &-card__text
         width: 300px
+
+.whom-card:hover .card__icon-bottom
+    background-color: rgba(#fff, 0.1)
 //whom end
 //banner start
 .banner
-    margin-top: 90px
+    position: relative
+    padding-top: 90px
     padding-bottom: 100px
+    overflow: hidden
+    &__content
+        position: relative
+        z-index: 3
     &__heading
         max-width: 577px
         width: 100%
@@ -558,6 +900,15 @@
         box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
 //banner end
 //footer start
+body.theme--ligth
+    .footer__top
+        background: #fff
+    .footer__bottom
+        background: $greyLight
+    .footer__bottom-made:hover
+        color: #000
+    .footer__bottom-made svg path
+        fill: $black
 .footer
     &__top
         padding: 60px 0
@@ -576,10 +927,11 @@
         font-weight: 500
         font-size: 12px
         line-height: 20px
-        color: $white
+        color: var(--color-card-heading)
 .social__links
     @include FlexBetween
     margin-top: 35px
+
 .foter-col
     &:not(:last-child)
         width: 160px
@@ -597,12 +949,12 @@
         font-size: 16px
         line-height: 24px
         font-weight: 500
-        color: $text
+        color: var(--color-text)
         transition: color .3s
         &:not(:last-child)
             margin-bottom: 15px
         &:hover
-            color: $white
+            color: var(--color-card-heading)
 
 .footer-subscribshin
     &__inner
@@ -612,20 +964,21 @@
         margin-right: 15px
         width: 187px
         padding: 17px 7px 17px 20px
-        background-color: rgba($white, 0.1)
+        background-color: var(--input-bg)
         border-radius: 12px
         font-weight: 500
         font-size: 16px
         line-height: 24px
-        color: #fff
+        color: var(--color-title)
         transition: background-color .3s
         &::placeholder
-            color: $text
+            color: var(--color-text)
         &:hover,
         &:focus
-            background-color: rgba($white, 0.16)
+            background-color: var(--input-bg-hover)
         &.error
             background-color: rgba(#F54242, 0.16)
+
     &__btn
         @include centerFlex
         width: 58px
@@ -656,7 +1009,7 @@
         font-weight: 500
         font-size: 12px
         line-height: 20px
-        color: $white
+        color: var(--color-card-heading)
         span
             display: block
 
@@ -664,7 +1017,7 @@
     font-weight: 500
     font-size: 16px
     line-height: 24px
-    color: $white
+    color: var(--color-card-heading)
     &-inner
         @include FlexBetween
         padding: 33px 0 38px
@@ -694,6 +1047,11 @@
     margin: 67px 0 140px
     @include centerFlex
     flex-direction: column
+    &__card
+        border-radius: 23px
+        overflow: hidden
+        margin-bottom: 50px
+        box-shadow: var(--box-shadow)
     &__heading
         margin-bottom: 50px
         max-width: 560px
@@ -701,18 +1059,36 @@
         text-align: center
     &__text
         margin-bottom: 60px
-        color: $text
+        color: var(--color-text)
         max-width: 360px
         width: 100%
         text-align: center
-// .wrapper
-//     padding: 66px 0 93px
+
+.box-between__img
+    margin-top: -20px
+    margin-right: -20px
+
 .box-between__text
     max-width: 360px
     width: 100%
 
 //box-center end
-//contact start
+//contact start 
+body.theme--ligth .contact__inner
+    .header__menu-link
+        color: #fff
+    .dropdown-title
+        color: #fff
+    .lang-switcher::before
+        filter: invert(0)
+    .lang-switcher.active
+        .dropdown-title
+            color: $black
+        .lang-switcher::before
+            filter: invert(1)
+body.theme--ligth
+    .contact__box:hover .square-btn
+        background: #fff
 .contact
     &__inner
         background-image: url(../images/contacts-bg.jpg)
@@ -723,6 +1099,8 @@
         height: 645px
     &__content
         margin-top: 80px
+    &__heading
+        color: #fff
     &__text
         margin-top: 50px
         max-width: 488px
@@ -748,6 +1126,7 @@
     &-social__links
         width: 260px
         margin-top: 20px
+
 .contact__box
     display: flex
     align-items: center
@@ -760,14 +1139,17 @@
         font-weight: 500
         font-size: 16px
         line-height: 24px
-        color: $text
+        color: var(--color-text)
     &-link
         font-size: 24px
         line-height: 40px
 //contact end
 //form start
+body.theme--ligth .form__date::before
+    filter: invert(100%)
+
 .form
-    background: #2D2F33
+    background: var(--form-bg)
     border-radius: 12px
     padding: 50px
     &__heading
@@ -786,7 +1168,7 @@
     &__label
         display: block
         margin-bottom: 10px
-        color: $text
+        color: var(--color-text)
         font-size: 14px
         line-height: 20px
         font-weight: 500
@@ -795,17 +1177,17 @@
     &__input
         width: 100%
         display: block
-        background-color: rgba($white, 0.1)
+        background-color: var(--input-bg)
         border-radius: 8px
         padding: 14px 20px
-        color: #fff
+        color: var(--color-title)
         font-weight: 500
         font-size: 16px
         line-height: 24px
         transition: all .3s
         &:hover,
         &:focus
-            background-color: rgba($white, 0.16)
+            background-color: var(--input-bg-hover)
         &.error
             background-color: rgba($red, 0.16)
     &__teaxtarea
@@ -816,13 +1198,129 @@
         outline: none
         display: block
         &::placeholder
-            color: #fff
+            color: var(--color-title)
     &__privacy
         font-weight: 500
         font-size: 14px
         line-height: 20px
     &__btn
         margin-top: 50px
+    &__date
+        position: relative
+        &::before
+            content: ""
+            position: absolute
+            width: 15px
+            height: 13px
+            right: 19px
+            top: 50px
+            background-image: url(../images/icons/calendar.svg)
+            background-size: cover
+            background-repeat: no-repeat
+            background-position: center
+
+.jq-selectbox
+    width: 100%
+    &.focused .jq-selectbox__select
+        border: none
+    &.opened .jq-selectbox__select
+        border-radius: 0
+        border-top-left-radius: 8px
+        border-top-right-radius: 8px
+
+.jq-selectbox__select
+    height: 52px
+    border-radius: 8px
+    padding: 14px 20px
+    border: none
+    border-bottom-color: transparent
+    background: rgba(#E0E0FF, 0.1)
+    box-shadow: none
+    font: inherit
+    color: #fff
+    text-shadow: none
+    transition: all .3s
+    &:hover,
+    &:focus
+        background: rgba(#E0E0FF, 0.16)
+    &:active
+        box-shadow: none
+    &.error
+        background: rgba($red, 0.16)
+
+.jq-selectbox__select-text
+    font-weight: 500
+    font-size: 16px
+    line-height: 24px
+    color: var(--color-title)
+
+.jq-selectbox__trigger
+    position: absolute
+    top: 0
+    right: 0
+    width: 34px
+    height: 100%
+    border-left: none
+
+body.theme--ligth
+    .jq-selectbox__select
+        background: #F3F3FC
+        &:hover,&:focus
+            background: #ECECF9
+    .jq-selectbox.opened .jq-selectbox__select
+        background: #ECECF9
+    .jq-selectbox li
+        color: $black
+        &:hover
+            background: rgba(#E0E0FF, 0.5)
+
+    .jq-selectbox__trigger-arrow
+        filter: invert(100%)
+
+.jq-selectbox__trigger-arrow
+    position: absolute
+    top: 25px
+    right: 24px
+    border-top: none
+    border-right: none
+    border-left: none
+    background-image: url(../images/icons/arrow-down.svg)
+    width: 10px
+    height: 7px
+    background-size: contain
+    background-repeat: no-repeat
+    transition: all .2s
+
+.jq-selectbox.opened .jq-selectbox__trigger-arrow
+    transform: matrix(1, 0, 0, -1, 0, 0)
+    opacity: 0.4
+
+.jq-selectbox__dropdown
+    top: 51px !important
+    margin: 0 0
+    padding: 0
+    border: none
+    border-radius: 0px
+    border-bottom-left-radius: 8px
+    border-bottom-right-radius: 8px
+    background: var(--select-dropdown)
+    box-shadow: none
+    font: inherit
+    font-weight: 500
+    font-size: 16px
+    line-height: 24px
+    overflow: hidden
+
+.jq-selectbox li
+    padding: 15px 20px 13px
+    color: #fff
+    transition: all .3s
+    &:hover
+        background-color: rgba($white, 0.1)
+        color: #FFF
+    &.selected
+        background-color: rgba($white, 0.1)
+
 //form end
 //blog start
 .blog
@@ -832,15 +1330,18 @@
         align-items: flex-start
         margin-bottom: 140px
         margin-top: 50px
+
     .tabs
         flex-direction: column
         display: flex
+        position: sticky
+        top: 10px
     &-tab
         position: relative
         font-weight: 500
         font-size: 24px
         line-height: 40px
-        color: $text
+        color: var(--color-text)
         cursor: pointer
         transition: all .3s
         &:not(:last-child)
@@ -854,10 +1355,10 @@
             background-color: $purple
             transition: all .3s
         &:hover
-            color: $white
+            color: var(--color-card-heading)
     &-tab.active
         padding-left: 40px
-        color: #fff
+        color: var(--color-title)
         &::before
             height: 100%
     &__items
@@ -869,9 +1370,9 @@
         align-items: center
         justify-content: center
         margin-top: 10px
-        img:first-child
+        svg:first-child
             animation: loader 5s infinite linear
-        img:last-child
+        svg:last-child
             position: absolute
 
 @keyframes loader
@@ -879,7 +1380,8 @@
         transform: rotate(0deg)
     100%
         transform: rotate(360deg)
-
+body.theme--ligth .blog__card
+    background: #fff
 .blog__card
     max-width: 360px
     width: 100%
@@ -887,7 +1389,7 @@
     margin-bottom: 40px
     margin-left: 40px
     border-radius: 12px
-    box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+    box-shadow: var(--box-shadow)
     background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
     overflow: hidden
     position: relative
@@ -910,6 +1412,7 @@
         font-size: 14px
         line-height: 16px
         border-radius: 4px
+        color: #fff
         &::before
             content: ""
             position: absolute
@@ -926,12 +1429,15 @@
         font-weight: 500
         font-size: 16px
         line-height: 24px
-        color: $text
+        color: var(--color-text)
     &-text
-        color: $white
+        color: var(--color-card-heading)
 
 //blog end
 //article start
+body.theme--ligth .article__nav::before
+    filter: invert(100%)
+
 .article
     margin-top: 58px
     &__nav
@@ -949,13 +1455,16 @@
             background-position: center
     &__links
         position: sticky
-        top: 0
+        top: 18px
     &__inner
         @include FlexStart
         margin-top: 20px
         margin-bottom: 120px
     &__content
         margin-left: 40px
+        max-width: 860px
+        width: 100%
+        margin-right: auto
     &__heading
         margin-bottom: 45px
     &__text
@@ -1004,7 +1513,7 @@
 
 .article__more
     padding: 120px 0 140px
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+
     &-head
         @include FlexBetween
 
@@ -1018,7 +1527,7 @@
     .slick-slide
         box-shadow: none
     .slick-slide.slick-active
-        box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+        box-shadow: var(--box-shadow)
 
 .article__slider
     overflow: hidden
@@ -1026,6 +1535,21 @@
     margin-right: -40px
 
 //article end
+///upload start 
+.surfase
+    position: absolute
+
+#upload-surfase
+    top: -170px
+    right: 0
+    left: 0
+    z-index: -1
+    overflow: hidden
+    img
+        margin-left: 70%
+.upload
+    margin-bottom: 166px
+
 .upload__img
     position: absolute
     right: 50px
@@ -1041,12 +1565,11 @@
     &-glitch::before,
         content: ""
         position: absolute
-
-        top: 0px
-        left: 0px
-        width: 100%
-        height: 100%
-        background: inherit
+        top: 60px
+        left: 60px
+        width: 72%
+        height: 72%
+        background-image: url("../images/upload-glitch.png")
         transform: translateX(10px)
         animation-duration: 3s
         animation-timing-function: linear
@@ -1223,6 +1746,14 @@
 
 //make-money end
 //property start
+body.theme--ligth .property__item
+    .property__number
+        color: #fff
+    .property__text
+        color: $white
+    &::before
+        height: 100%
+
 .property
     margin: 140px 0 150px
     &__inner
@@ -1274,9 +1805,23 @@
 
 //property end
 //advanced start
+#advanced-surfaces
+    top: -87%
+    right: -31%
+    transform: rotate(-150deg) !important
+
+body.theme--ligth
+    .advanced-tab
+        background-color: $greyLight
+        &.active,
+        &:hover
+            color: #fff
+            background-color: $purple
+
 .advanced
+    position: relative
     padding: 112px 0 230px
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+    overflow: hidden
     .tabs
         margin-bottom: 35px
     &-tab
@@ -1302,6 +1847,12 @@
     &-conetnt__text
         max-width: 303px
         width: 100%
+    .info-block__subtext
+        margin-bottom: 45px
+    .block__inner
+        position: relative
+        z-index: 2
+
 .advanced-tabs
     .tab-item
         position: relative
@@ -1325,6 +1876,7 @@
     z-index: 2
     overflow: hidden
 //subscribe start
+
 .subscribe
     &__inner
         padding-left: 100px
@@ -1343,6 +1895,10 @@
             background-repeat: no-repeat
             background-position: center center
             z-index: -1
+    .block__text
+        color: $white
+    .block__heading
+        color: #fff
 
 .carusel
     width: 460px
@@ -1397,13 +1953,26 @@
 
 //subscribe end
 //faq start
+#faq-surfaces
+    left: -60px
+    top: -60px
+    z-index: 0
 .faq
-    margin-bottom: 150px
+    position: relative
+    padding: 150px 0
+    overflow: hidden
     &__heading
         max-width: 370px
         width: 100%
+        position: relative
+        z-index: 1
     &__items
         margin-top: 50px
+        position: relative
+        z-index: 1
+body.theme--ligth .faq-item
+    border-top: 1px solid #E0E0FF
+
 .faq-item
     padding: 40px 0
     border-top: 1px solid rgba(#E0E0FF, 0.1)
@@ -1419,7 +1988,7 @@
         max-width: 680px
         width: 100%
         font-weight: 500
-        color: $text
+        color: var(--color-text)
     &__arrow
         transition: all .2s
     &.show .faq-item__arrow
@@ -1435,21 +2004,27 @@
 //pricing start
 .pricing
     margin-top: 80px
-    margin-bottom: 140px
     &__inner
         text-align: center
     &__text
         margin-top: 25px
-        color: $text
+        color: var(--color-text)
     &__items
         @include FlexStart
         margin-top: 50px
+body.theme--ligth .pricing-item
+    background: #fff
+body.theme--ligth .pricing-item__li::before
+    filter: invert(100%)
+
 .pricing-item
     padding: 25px
     max-width: 250px
     width: 100%
+    min-height: 1148px
+    height: 100%
     background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
-    box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+    box-shadow: var(--box-shadow)
     border-radius: 12px
     &__head
         @include centerFlex
@@ -1459,7 +2034,7 @@
         font-weight: 500
         font-size: 16px
         line-height: 24px
-        color: $text
+        color: var(--color-text)
     &__subheading.pink
         color: $pink
     &__subheading.purple
@@ -1481,7 +2056,7 @@
         letter-spacing: normal
     &__benifits
         padding: 20px 0
-        color: $white
+        color: var(--color-card-heading)
         &:not(:last-child)
             border-top: 1px solid rgba(#E0E0FF, 0.07)
         &:nth-child(3)
@@ -1511,13 +2086,14 @@
             background-position: center
     &__li-descr
         margin-top: 4px
-        color: $text
+        color: var(--color-text)
     &__link
         padding: 19px
         line-height: 24px
         display: block
         text-align: center
         border-radius: 12px
+        color: #fff
         transition: all .3s
         &.disabled
             opacity: 0.3
@@ -1538,17 +2114,44 @@
         box-shadow: 0px 8px 8px rgba(156, 66, 245, 0.122)
         &:hover
             background-color: #801EE1
+
 //pricing end
+
+//plan start
+.plan
+    padding-top: 140px
+    .top-surfaces
+        top: 60px
+    .surface-left-orange svg
+        top: -23%
+        left: 12%
+
+.top-surfaces
+    z-index: -1
+
+.surface-left-purple svg
+    top: -8%
+    left: -8%
+
+.surface-left-orange svg
+    top: -13%
+    left: 20%
+
+//plan end
+
 //free-subscription start
 .free-subscription
-    margin: 70px 0 100px
+    padding: 70px 0 100px
+    overflow: hidden
     &__inner
         @include FlexBetween
+
 //free-subscription end
+
 //customer start
 .customer
     padding: 140px 0
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+
     &__headign
         margin-bottom: 90px
         text-align: center
@@ -1595,12 +2198,12 @@
     &__heading
         font-size: 24px
         line-height: 36px
-        color: $white
+        color: var(--color-card-heading)
     &__text
         font-weight: 500
         font-size: 12px
         line-height: 20px
-        color: $text
+        color: var(--color-text)
 .avatar
     border-radius: 50%
     border: 16px solid
@@ -1628,9 +2231,11 @@
     top: -70px
     right: -12px
 //customer end
+
 //testimoniall start
+
 .testimoniall
-    margin: 140px 0
+    margin-top: 140px
     &__head
         @include FlexBetween
         margin-bottom: 69px
@@ -1641,6 +2246,7 @@
     .slick-list
         padding-top: 160px
         padding-bottom: 80px
+
 .testimoniall-item
     max-width: 360px
     width: 100%
@@ -1663,6 +2269,7 @@
         padding-left: 30px
         padding-right: 30px
         border-radius: 12px
+        box-shadow: var(--box-shadow)
     &__avatar
         position: absolute
         width: 128px
@@ -1676,8 +2283,28 @@
         font-size: 16px
         line-height: 24px
         color: rgba($black, 0.6)
+
 //testimoniall end
+.looking-for
+    padding-top: 140px
+    padding-bottom: 107px
+    overflow: hidden
+    .block__inner
+        position: relative
+        z-index: 3
+    .block__text
+        max-width: 440px
+#three-surfaces
+    z-index: 1
+    .surface-banner-orange svg
+        top: 24%
+    .surface-banner-purple svg
+        bottom: -21%
+        left: 35%
+
 //setup start
+.save-costs-surfases
+    height: 132%
 .step-number
     width: 333px
     height: 333px
@@ -1699,6 +2326,7 @@
         left: 0px
         top: -72px
         z-index: -1
+        color: #FFF
     &__arrow
         margin-left: auto
         margin-bottom: 54px
@@ -1707,19 +2335,17 @@
 
 //setup end
 .step-slider
-    max-width: 980px
     width: 100%
     position: absolute
-    right: 0
+    right: -49%
     .slick-list
         margin: -40px 0
     .card
-        margin-top: 40px
         margin-bottom: 40px
         margin-right: 40px
         min-height: 305px
         height: 100%
-        transform: translateX(-59px)
+
 //availability start
 .availability
     margin-bottom: 227px
@@ -1756,15 +2382,19 @@
         margin-top: 90px
         margin-right: 200px
         text-align: right
+        color: #fff
     &__slider
         bottom: -40px
         z-index: 1
+// .availability__slider .card
+//     transform: translateX(15px)
+
 //availability end
 //live start
 .inner-blocks
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
-    padding-bottom: 100px
-
+    background: var(--select-bg)
+.lives-inner
+    background: var(--select-bg)
 .live
     padding: 140px 0
     &__step
@@ -1775,6 +2405,7 @@
         width: 309px
         height: 309px
         z-index: -1
+        color: #FFF
     &__inner
         position: relative
         z-index: 2
@@ -1799,17 +2430,35 @@
         margin-right: 40px
     &__heading
         font-weight: 600
+        color: #fff
     &__text
         font-weight: 500
         font-size: 16px
         line-height: 24px
+        color: #fff
+
+.events-advantages
+    padding-bottom: 100px
+
+    overflow: hidden
+    .block__content
+        position: relative
+        z-index: 3
 
 .events-advantages__img
     max-width: 660px
     width: 100%
+    height: auto
     margin-right: -20px
 //live end
 //event start
+
+body.theme--ligth .event-arrow
+    filter: invert(100%)
+
+.features__wrap
+    padding-bottom: 435px
+
 .event
     margin-top: 130px
     padding-top: 118px
@@ -1842,8 +2491,8 @@
         width: 315px
         height: 315px
         border-radius: 50%
-        box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
-        background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+        box-shadow: var(--box-shadow)
+        background: var(--section-bg)
         z-index: 1
     &:nth-child(2)
         width: 314px
@@ -1874,25 +2523,41 @@
         width: 100%
 //event end
 //features start
+
 .features
     margin-top: 128px
-.features__inner
-    text-align: center
     position: relative
-    z-index: 3
+    &__inner
+        text-align: center
+        position: relative
+        z-index: 3
     .block-list__item
         justify-content: center
+
+#features-surfases
+    left: -123px
+    top: -100px
+
+body.theme--ligth
+    .circle-users
+        &::before,
+        &::after
+            box-shadow: inset 8px 8px 24px rgba(54, 25, 119, 0.11)
+    .circle-user__main
+        background: #fff
+
 .circle-users
     position: relative
     @include centerFlex
     height: 741px
     margin-top: -50px
+    z-index: 1
     &::before,
     &::after
         content: ""
         position: absolute
         border-radius: 50%
-        background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+        background: var(--section-bg)
         box-shadow: inset 8px 8px 24px rgba(9, 13, 20, 0.4)
     &::before
         width: 527px
@@ -1907,8 +2572,8 @@
     position: relative
     width: 351px
     height: 351px
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
-    box-shadow: 8px 8px 24px rgba(9, 13, 20, 0.4)
+    background: var(--section-bg)
+    box-shadow: var(--box-shadow)
     border-radius: 50%
     display: flex
     align-items: center
@@ -1925,32 +2590,37 @@
 
 .circle-user:nth-child(1)
     transform: translate(-200px, -160px)
-    animation: circleUser1 11s linear infinite
-
+    animation: circleUser1 25s linear infinite
+    padding: 10px
+    &:hover
+        padding: 15px
 .circle-user:nth-child(2)
-    transform: translate(-40px, -211px)
-    animation: circleUser2 11s linear infinite
+    transform: translate(0px, -217px)
+    animation: circleUser2 25s linear infinite
+    padding: 7px
+    &:hover
+        padding: 10px
 
 .circle-user:nth-child(3)
-    transform: translate(208px, -150px)
-    animation: circleUser3 11s linear infinite
+    animation: circleUser3 25s linear infinite
 
 .circle-user:nth-child(4)
-    transform: translate(248px, 120px)
-    animation: circleUser4 11s linear infinite
+    transform: translate(240px, 95px)
+    animation: circleUser4 25s linear infinite
 
 .circle-user:nth-child(5)
     width: 108px
     height: 108px
-    transform: translate(78px, 266px)
-    animation: circleUser5 11s linear infinite
+    transform: translate(23px, 250px)
+    animation: circleUser5 25s linear infinite
 
 .circle-user:nth-child(6)
-    transform: translate(-250px, 100px)
-    animation: circleUser6 11s linear infinite
+    transform: translate(-235px, 100px)
+    animation: circleUser6 25s linear infinite
 
 .circle-user:hover
     padding: 5px
+
 .circle-users__item:hover .circle-user
     animation-play-state: paused
 
@@ -1975,6 +2645,8 @@
         height: 80%
     &:hover
         padding: 5px
+        width: 286px
+        height: 286px
 
 @keyframes circleUser1
     from
@@ -1984,9 +2656,9 @@
 
 @keyframes circleUser2
     from
-        transform: rotate(0deg) translate(-40px, -211px) rotate(0deg)
+        transform: rotate(0deg) translate(0px, -217px) rotate(0deg)
     to
-        transform: rotate(360deg) translate(-40px, -211px) rotate(-360deg)
+        transform: rotate(360deg) translate(0px, -217px) rotate(-360deg)
 
 @keyframes circleUser3
     from
@@ -1996,67 +2668,402 @@
 
 @keyframes circleUser4
     from
-        transform: rotate(0deg) translate(248px, 120px) rotate(0deg)
+        transform: rotate(0deg) translate(240px, 95px) rotate(0deg)
     to
-        transform: rotate(360deg) translate(248px, 120px) rotate(-360deg)
+        transform: rotate(360deg) translate(240px, 95px) rotate(-360deg)
 
 @keyframes circleUser5
     from
-        transform: rotate(0deg) translate(78px, 266px) rotate(0deg)
+        transform: rotate(0deg) translate(23px, 250px) rotate(0deg)
     to
-        transform: rotate(360deg) translate(78px, 266px) rotate(-360deg)
+        transform: rotate(360deg) translate(23px, 250px) rotate(-360deg)
 
 @keyframes circleUser6
     from
-        transform: rotate(0deg) translate(-250px, 100px) rotate(0deg)
+        transform: rotate(0deg) translate(-235px, 100px) rotate(0deg)
     to
-        transform: rotate(360deg) translate(-250px, 100px) rotate(-360deg)
+        transform: rotate(360deg) translate(-235px, 100px) rotate(-360deg)
 //features end
+
 //monetization start
+body.theme--ligth .monetization__wrapper
+    background-image: url(../images/monetization-bg_white.svg)
+
 .monetization
-    padding: 146px 0 230px
-    &__wrapper
-        position: relative
-        margin-right: 140px
-        padding: 120px 0
-        min-height: 627px
-        height: 100%
-        background-repeat: no-repeat
-        background-size: cover
+    margin-top: -300px
+    position: relative
+    padding-bottom: 160px
+    background-image: url(../images/monetization-bg.svg)
+    background-repeat: no-repeat
+    background-size: 100%
+    max-width: 85%
+
+    // &::before
+    //     content: ""
+    //     position: absolute
+    //     background-image: url(../images/monetization-bg.svg)
+    //     background-repeat: no-repeat
+    //     background-size: contain
+    //     width: 100%
+    //     height: 100%
+
+    // &__wrapper
+    //     position: absolute
+    //     margin-right: 140px
+    //     padding: 130px 0 206px
+    //     min-height: 627px
+    //     height: 100%
+
+    //     max-width: 1510px
+    //     width: 100%
+    //     img
+    //         width: 100%
 
     &__inner
         position: relative
         justify-content: flex-end
+        align-items: center
+        height: 645px
+
         p
             max-width: 337px
             width: 100%
+
     &__content
         max-width: 530px
     &__img
         position: absolute
         left: -40px
-        top: -210px
+        top: 0px
         max-width: 626px
         width: 100%
 
 //monetization end
+//gamification-engagement start
+body.theme--ligth .advantages__item:hover
+    .card__heading
+        color: #fff
+
+.gamification-engagement
+    margin-bottom: 140px
+    .block__content
+        max-width: 370px
+
+//gamification-engagement end
+//sharability start
+
+.sharability
+    position: relative
+    padding-bottom: 140px
+    padding-top: 140px
+    overflow: hidden
+    &-img
+        max-width: 500px
+        width: 100%
+    .block__inner
+        justify-content: flex-start
+    .block__content
+        margin-left: 100px
+#sharability-surface
+    bottom: -34px
+    right: 107px
+
+//sharability end
+
+//ease-use start
+.ease-use
+    padding: 140px 0
+    position: relative
+    .block__content
+        position: relative
+        z-index: 3
+    .block__text
+        max-width: 360px
+
+    .slider-cards
+        bottom: -100px
+
+.slider__container .block__content
+    margin-left: 100px
+
+.slider__inner
+    max-width: 900px
+    width: 100%
+    display: flex
+    justify-content: flex-end
+    align-items: flex-start
+    position: relative
+.slider-cards
+    right: 0px
+
+#ease-use-surfase
+    top: -90px
+    right: 310px
+    z-index: 1
+//ease-use end
+
+//lifecycle start
+.surface-right-bottom-purple__small svg
+    bottom: -22%
+    left: 7%
+
+.surface-right-bottom-orange__small svg
+    left: -2%
+    bottom: 12%
+body.theme--ligth .lifecycle-img::before
+    background-color: $white
+
+.lifecycle
+    position: relative
+    overflow: hidden
+    padding: 81px 0 210px
+    .block__text
+        max-width: 300px
+    &-img
+        position: absolute
+        right: -13px
+        top: 0
+        max-width: 848px
+        max-height: 533px
+        height: 100%
+        width: 100%
+        z-index: 2
+        &::before
+            position: absolute
+            content: ""
+            background-color: rgba(#fff, 0.1)
+            left: -27px
+            bottom: -20px
+            width: 918px
+            height: 100%
+            border-radius: 20px
+            z-index: -1
+        img
+            border-radius: 20px
+        object
+            width: 100%
+            height: 100%
+            border-radius: 20px
+
+#lifecycle-surfaces
+    left: -70px
+    bottom: -110px
+
+//lifecycle end
+//money-transfer start
+body.theme--ligth
+    .money-transfer
+        background-image: url(../images/map-white.svg)
+
+    .money-transfer__box svg path
+        fill: $purple
+
+    .money-transfer__box-content
+        background: rgba(#9191A5, 0.2)
+        &::before
+            border-top: 7px solid rgba(#9191A5, 0.2)
+
+.money-transfer
+    position: relative
+    padding: 140px 0 576px
+    background-size: contain
+    background-position: center 340px
+    background-repeat: no-repeat
+    overflow: hidden
+    background-image: url(../images/word-map.svg)
+    .block-list
+        margin-bottom: 40px
+    .block__text
+        max-width: 690px
+body.theme--ligth .money-transfer__box-content::after
+    filter: invert(100%)
+
+.money-transfer__box
+    position: absolute
+    &.animate
+        opacity: 0
+    &.animate.fadeIn
+        opacity: 1
+
+    &-content
+        margin-bottom: 10px
+        padding: 5px 15px 5px 44px
+        border-radius: 100px
+        background: rgba(#FFFFFF, 0.1)
+        font-size: 16px
+        line-height: 28px
+        position: relative
+        animation: 1.5s fadeInUp linear infinite
+
+        &::before,
+        &::after
+            content: ''
+            position: absolute
+        &::before
+            left: 46%
+            bottom: -14px
+            border: 7px solid transparent
+            border-top: 7px solid rgba(255,255,255,0.1)
+        &::after
+            background-image: url(../images/icons/card.svg)
+            background-size: contain
+            background-repeat: no-repeat
+            width: 24px
+            height: 18px
+            left: 10px
+            top: 8px
+    svg
+        animation-duration: 2.5s
+
+@keyframes fadeInUp
+    0%
+        opacity: 0
+        transform: translate3d(0,0%,0)
+    to
+        opacity: 1
+        transform: translateY(-35px)
+
+.money-transfer__box-1
+    top: 400px
+    left: -120px
+
+.money-transfer__box-2
+    top: 500px
+    right: 560px
+
+.money-transfer__box-3
+    top: 410px
+    right: 70px
+
+.money-transfer__box-4
+    bottom: -364px
+    left: 42px
+
+.money-transfer__box-5
+    bottom: -328px
+    right: 300px
+
+//money-transfer end
+
+//data-analysis start
+body.theme--ligth .data-analysis-card__heading
+    color: $white
+
+.data-analysis
+    padding-top: 150px
+    margin-bottom: 40px
+    .block__text
+        text-align: center
+        max-width: 740px
+    &__line
+        display: flex
+        flex-direction: column
+    &__inner
+        position: relative
+        display: inline-flex
+    &__slider
+        display: inline-flex
+    .marquee__track
+        &:hover
+            animation-play-state: paused
+
+// @keyframes scroll
+//     0%
+//         transform: translate(100%,0)
+//     100%
+//         transform: translate(-100%,0)
+
+.data-analysis-card
+    padding: 30px 30px 35px
+    box-shadow: 0px 8px 8px rgba(156, 66, 245, 0.122)
+    border-radius: 12px
+    height: 250px
+    margin-right: 40px
+    width: 310px
+    &__content
+        height: 100%
+        display: flex
+        justify-content: space-between
+        flex-direction: column
+    &__icon
+        background-color: rgba(#fff, 0.1)
+
+//data-analysis end
+//support start
+.support
+    margin-top: 140px
+    padding-bottom: 140px
+    position: relative
+    &-img
+        max-width: 600px
+        width: 100%
+        border-radius: 20px
+        overflow: hidden
+
+#support-surfase
+    right: 0px
+    bottom: -190px
+//support end
+//test-features start
+.test-features
+    padding: 90px 0 107px
+    position: relative
+    overflow: hidden
+    .block__inner
+        z-index: 2
+        position: relative
+    .block__content
+        max-width: 490px
+        z-index: 2
+    .block__text
+        max-width: 310px
+    &__img
+        max-width: 600px
+        width: 100%
+    .surface-banner-orange_big svg
+        right: -5%
+        top: -12%
+
+#test-features-surfases
+    bottom: 0px
+    z-index: 1
+
+//test-features end
+
 //affiliate start
+body.theme--ligth .affiliate__inner
+    background: #fff
+    box-shadow: 8px 8px 35px rgba(54, 25, 119, 0.11)
+
 .affiliate
     margin-bottom: 316px
     position: relative
     &__inner
-        background: rgba(#FFFFFF, 0.05)
+        max-width: 1160px
+        width: 100%
+        background: var(--card-bg)
         border-radius: 20px
+        box-shadow: var(--box-shadow)
         padding: 90px 0 0px 110px
         height: 488px
+        justify-content: flex-start
+        position: relative
 
+    &__content
+        position: relative
+        padding-bottom: 60px
+        height: 100%
+        width: 100%
     &__heading
-        margin-bottom: 59px
+        margin-bottom: 20px
+        max-width: 570px
+        width: 100%
+
     &__slider
-        max-width: 700px
         width: 100%
         position: absolute
-        right: 0
+        right: -51%
+        bottom: -170px
     &-items
         max-width: 480px
         width: 100%
@@ -2111,29 +3118,13 @@
     .affiliate-ellipse__text
         animation: ellipseEllipse3 5s linear infinite
 
-@keyframes ellipseEllipse1
-    from
-        transform: rotate(0deg) translate(-67px, -20px) rotate(-5deg)
-    to
-        transform: rotate(130deg) translate(-43px, -77px) rotate(0deg)
-
-@keyframes ellipseEllipse2
-    from
-        transform: rotate(0deg) translate(83px, -29px)
-    to
-        transform: rotate(360deg) translate(83px, -29px)
-
-@keyframes ellipseEllipse3
-    from
-        transform: rotate(0deg) translate(-69px, -26px)
-    to
-        transform: rotate(360deg) translate(-69px, -26px)
-
 .affiliate__slide
     width: 360px
     transition: none
     position: relative
     margin-right: 30px
+    margin-bottom: 40px
+    padding: 35px 40px 50px
     &::before
         content: ""
         position: absolute
@@ -2148,6 +3139,9 @@
     &:hover
         &::before
             opacity: 0
+    &-heading
+        width: 230px
+        font-weight: 600
 //affiliate end
 //features-cont start
 .features-cont
@@ -2214,6 +3208,10 @@
 
 .affiliate-user
     position: absolute
+body.theme--ligth .affiliate-items
+    .user.white-bg,
+    .user.grey-bg
+        box-shadow: 8px 8px 35px rgba(54, 25, 119, 0.11)
 
 .affiliate-ambassadors
     .affiliate-user:nth-child(1)
@@ -2228,6 +3226,7 @@
         height: 166px
         right: 80px
         top: 180px
+        //padding: 20px
 
     .affiliate-user:nth-child(2)
         width: 160px
@@ -2236,7 +3235,7 @@
 
 //form-popup start
 .popup
-    background: #2D2F33
+    background: var(--form-bg)
     border-radius: 12px
     padding: 50px
     text-align: left
@@ -2249,7 +3248,7 @@
         width: 100%
     &__text
         margin-bottom: 40px
-        color: $text
+        color: var(--color-text)
 .form-popup__heading
     margin-bottom: 20px
     font-weight: 600
@@ -2281,6 +3280,11 @@
 .mfp-close
     right: -50px
     top: -10px
+body.theme--ligth .btn-back
+    background: $greyLight
+    box-shadow: none
+    .btn-arrow::before
+        filter: invert(100%)
 .btn-back
     width: 199px
     text-align: center
@@ -2293,11 +3297,14 @@
     .btn-arrow::before
         right: inherit
         left: -33px
+        top: 7px
         transform: rotate(180deg)
 .btn-back
     margin-right: 20px
 
 //form-popup end
+.checkbox-wrapper
+    margin-top: 42px
 .checkbox
     position: absolute
     z-index: -1
@@ -2358,36 +3365,95 @@
     &:disabled+label::before
         opacity: 0.2
 
+//ambassadors
+body.theme--ligth .ambassadors-wrap
+    background: #F3F3FC
+.ambassadors-wrap
+    background: linear-gradient(180deg, #171321 99.99%, rgba(23, 19, 33, 0) 100% )
+
+.ambassadors
+    position: relative
+    padding-bottom: 40px
+    &__img
+        position: relative
+        z-index: 2
+        &::before
+            position: absolute
+            content: ""
+            max-width: 350px
+            width: 100%
+            height: 445px
+            background-color: #0B0713
+            z-index: -1
+            right: 130px
+            top: 130px
+
+#ambassadors-inside-surfaces
+    z-index: -1
+.ambassadors-inside-surface__orange svg
+    top: 18%
+    left: 20%
+
+.ambassadors-inside-surface__orange-small svg
+    filter: blur(8px)
+    bottom: 34%
+    right: 38%
+.ambassadors-surface__orange svg
+    bottom: 8%
+    right: 36%
+
+.ambassadors-surface__orange-small svg
+    bottom: 22%
+    right: -2%
+
+.ambassadors-surface__purple svg
+    bottom: -30%
+    right: 12%
+
+#ambassadors-surfaces
+    z-index: 2
+.ambassadors-inside-surfaces--mobile
+    display: none
+//ambassadors
 //shape-events start
 .shape-events
     margin: 107px 0 150px
-    .block__inner
-        justify-content: space-around
+
     .block__content
         max-width: 490px
+        position: relative
+        z-index: 3
     .block__text
         max-width: 312px
+    .card__text
+        width: 250px
+
+.block-slider__inner
+    display: flex
 
 .slider-cards
-    max-width: 600px
     width: 100%
     position: absolute
-    left: 0
+
+    bottom: -54px
     .card
-        transform: translateX(230px)
-        margin: 20px 15px 20px 20px
+        transform: translateX(129px)
+        margin: 20px 20px 37px
         padding: 50px 30px
         position: relative
         opacity: .3
         transition: all .3s
-    .card.slick-active,
+    .card.slick-active
+        opacity: 1
+        box-shadow: var(--box-shadow)
     .card:hover
         opacity: 1
+    .card.slick-slide.slick-active.slick-current
 
-    .card__text
-        width: 250px
-        color: rgba(#fff, 0.6)
-
+        margin-right: 30px
+    .slick-list
+        padding: 0 30px
+        margin: 0 -30px
 //shape-events end
 //which-ambassador start
 .which-ambassador
@@ -2400,12 +3466,19 @@
     display: flex
     justify-content: space-between
 
+body.theme--ligth .affiliate-ambassador-item:hover
+    .affiliate-ambassador-item__heading
+        color: $black
+    .affiliate-ambassador-item__text
+        color: $grey
+
 .affiliate-ambassador-item
     max-width: 360px
     width: 100%
     padding: 40px 30px 30px
     background-repeat: no-repeat
     background-size: cover
+    background-position: center
     border-radius: 12px
     min-height: 450px
     height: 100%
@@ -2421,7 +3494,7 @@
             opacity: 1
     &__list
         margin-bottom: 48px
-        color: $white
+        color: var(--color-card-heading)
         opacity: 0
         transition: all .3s
     &__li
@@ -2446,11 +3519,16 @@
             background-repeat: no-repeat
     &__heading
         margin-bottom: 15px
-        color: $white
+        color: #fff
     &__text
         font-size: 16px
         line-height: 24px
-        color: $text
+        color: rgba(#fff, 0.6)
+
+body.theme--ligth .affiliate-ambassador-item.center:hover
+    .affiliate-ambassador-item__heading
+        color: #fff
+
 .affiliate-ambassador-item.center
     .card-circle__icon
         width: 93px
@@ -2458,7 +3536,7 @@
         margin-bottom: 40px
     .affiliate-ambassador-item__heading
         margin-bottom: 50px
-        color: #fff
+        color: var(--color-title)
     &:hover
         background: linear-gradient(135deg, #00BBFF 0%, #9C42F5 53%, #5D2DE1 100%) !important
         .card-circle__icon
@@ -2473,10 +3551,10 @@
 
 //which-ambassador end
 .what-ambassador
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
     padding: 150px 0
 //compensation start
 .compensation
+    position: relative
     padding-top: 150px
     margin-bottom: 140px
     &__heading,
@@ -2489,41 +3567,136 @@
         justify-content: space-between
         align-items: center
 .compensation-chart
-    position: relative
-    display: flex
-    align-items: center
-    justify-content: center
-    flex-direction: column
-    border: 22px solid rgba(#E0E0FF, 0.05)
-    border-radius: 50%
-    &:nth-child(1)
-        width: 240px
-        height: 240px
-    &:nth-child(2)
-        width: 388px
-        height: 388px
-
-    &:nth-child(3)
-        width: 322px
-        height: 322px
-
     &__supheading
-        width: 200px
         margin: 0 auto
         text-align: center
         font-weight: 500
         font-size: 16px
         line-height: 24px
-        color: $text
+        color: var(--color-text)
         &:last-child
-            color: $white
+            color: var(--color-card-heading)
     &__price
         margin: 10px 0
         font-weight: 800
         font-size: 54px
         line-height: 56px
         letter-spacing: -0.05em
+//graphics start
+body.theme--ligth .circle
+    .circle__outer,
+    .circle__mask
+        background: $greyLight
+.circle
+    z-index: 3
+    width: 388px // size
+    height: 388px // size
+    border-radius: 50%
+    position: relative
+    text-align: center
+    .circle__content
+        max-width: 90%
+    .circle__outer
+        z-index: 10
+        overflow: hidden
+        width: 388px // size
+        height: 388px // size
+        background: #2a2d34
+    .circle__half
+        top: 0
+        position: absolute
+        height: 388px // size
+        background: #9c42f5
+        width: 194px // size : 2
+        display: none
+        &.loaded
+            display: block
+        &.spinner
+            right: 0
+            z-index: 11
+            transform-origin: left center
+            border-radius: 0 194px 194px 0 // size : 2
+        &.filler
+            left: 0
+            z-index: 13
+            transform-origin: right center
+            border-radius: 194px 0 0 194px // size : 2
+    .circle__mask
+        top: 0
+        left: 0
+        z-index: 12
+        position: absolute
+        height: 388px // size
+        width: 194px // size : 2
+        background: #2a2d34
+        border-radius: 194px 0 0 194px // size : 2
+    .circle__inner
+        z-index: 20
+        position: absolute
+        background: var(--color-bg)
+        top: 22px
+        left: 22px
+        width: 344px // size - 44
+        height: 344px // size - 44
+        display: flex
+        justify-content: center
+        align-items: center
+    .circle__inner,
+    .circle__outer
+        border-radius: 50%
+    .circle__outer
+        display: inline-block
 
+.circle:nth-child(1)
+    width: 240px // size
+    height: 240px // size
+    .circle__outer
+        width: 240px // size
+        height: 240px // size
+    .circle__half
+        height: 240px // size
+        width: 120px // size : 2
+        background: #f54282
+        &.spinner
+            border-radius: 0 120px 120px 0 // size : 2
+        &.filler
+            border-radius: 120px 0 0 120px // size : 2
+    .circle__mask
+        height: 240px // size
+        width: 120px // size : 2
+        border-radius: 120px 0 0 120px // size : 2
+    .circle__inner
+        width: 196px // size - 44
+        height: 196px // size - 44
+
+.circle:nth-child(3)
+    width: 322px // size
+    height: 322px // size
+    .circle__outer
+        width: 322px // size
+        height: 322px // size
+    .circle__half
+        height: 322px // size
+        width: 161px // size : 2
+        background: #f56d42
+        &.spinner
+            border-radius: 0 161px 161px 0 // size : 2
+        &.filler
+            border-radius: 161px 0 0 161px // size : 2
+    .circle__mask
+        height: 322px // size
+        width: 161px // size : 2
+        border-radius: 161px 0 0 161px // size : 2
+    .circle__inner
+        width: 278px // size - 44
+        height: 278px // size - 44
+
+@keyframes loadSpinner
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+//graphics end
 //compensation end
 //ambassadors-steps start
 .ambassadors-steps
@@ -2534,6 +3707,15 @@
         display: flex
         flex-wrap: wrap
         align-items: flex-start
+        justify-content: space-between
+body.theme--ligth
+    .ambassadors-steps-item__title::before
+        background: $greyLight
+        opacity: 1
+    .ambassadors-steps-item:hover
+        .ambassadors-steps-item__title::before
+            background: radial-gradient(75.9% 75.9% at 26.5% 23%, #FF5E00 0%, #F54562 54.1%, #C32DE1 100%)
+
 .ambassadors-steps-item
     max-width: 360px
     width: 100%
@@ -2558,18 +3740,28 @@
     &__heading
         margin-bottom: 15px
         font-weight: 600
-        color: $white
+        color: var(--color-card-heading)
     &__text
         font-weight: 500
         line-height: 24px
-        color: $text
+        color: var(--color-text)
     .btn
         margin-top: 15px
 //ambassadors-steps end
 //interested start
+#interested-top-surfaces
+    .surface-left-orange svg
+        top: -11%
+        left: 14%
+    .surface-left-purple svg
+        top: -3%
+        left: -5%
+
 .interested
+    position: relative
     padding: 150px 0 140px
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+    z-index: 3
+    overflow: hidden
     .block__inner
         justify-content: flex-start
     .block__suptext
@@ -2582,7 +3774,7 @@
     &-contacts
         margin-top: 60px
     &-contacts__text
-        color: $text
+        color: var(--color-text)
         svg
             margin-right: 15px
     &-contacts__link
@@ -2596,7 +3788,7 @@
     font-weight: 500
     font-size: 12px
     line-height: 20px
-    color: $text
+    color: var(--color-text)
 
 .interested__cards
     position: relative
@@ -2615,7 +3807,7 @@
         position: relative
         display: flex
         align-items: center
-        margin-bottom: 17px
+
         &::before
             content: ""
             background-image: url(../images/icons/check-mark.svg)
@@ -2623,8 +3815,7 @@
             height: 15px
             background-size: contain
             margin-right: 20px
-    &__line:not(:last-child)
-        margin-bottom: 22px
+
 //interested end
 //why-us start
 .why-us
@@ -2636,36 +3827,60 @@
     &__inner
         display: flex
         margin-bottom: 130px
+
+.page
+    display: flex
+    flex-direction: column
+    background-color: var(--color-bg)
+    min-height: 72px
+    margin-bottom: 110px
+
 .marquee
-    margin-bottom: 140px
-    width: 100%
-    height: 72px
-    // filter: drop-shadow(5px 5px 20px rgba(9, 13, 20, 0.4))
-    animation: 5s scroll infinite linear
-    animation-delay: 2s
-    z-index: 3
-    position: relative
-    background-image: url(../images/running-line.svg)
-    background-size: cover
-    // h1
-    //     background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
-    //     mix-blend-mode: screen
-    //     -webkit-background-clip: text
-    //     -webkit-text-fill-color: transparent
-    //     transition: all .3s
-    //     &:hover
-    //         animation-play-state: paused
-    //         background: linear-gradient(90deg, rgba(45, 47, 51, 0) 22.49%, #E83F83 34.79%, #9A41F3 47.56%, #17AAFE 55.91%, #9A41F3 63.69%, #E83F83 74.78%, rgba(33, 36, 41, 0) 87.01%)
-    //         -webkit-background-clip: text
-    //         -webkit-text-fill-color: transparent
+    overflow: hidden
 
-@keyframes scroll
-    from
-        background-position: 0 0
+    &__track
+        position: relative
+        display: inline-flex
+        animation: marqueeAnimation 20s linear infinite
 
+@keyframes marqueeAnimation
     to
-        background-position: -1696px 0
+        transform: translateX(-50%)
 
+.marquee__line
+    display: inline-flex
+    padding: 0
+    margin: 0
+    list-style: none
+
+.marquee__text
+    position: relative
+    margin-right: 10px
+    background-image: var(--marquee-gradient)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.25))
+    user-select: none
+    font-weight: 800
+    font-size: 72px
+    line-height: 72px
+    letter-spacing: -0.05em
+    color: var(--color-bg)
+    &--animation
+        color: transparent
+
+    &:not(:last-child)::before
+        content: '*'
+        margin-right: 10px
+        vertical-align: sub
+
+body.theme--ligth
+    .why-map__img
+        display: none
+    .why-map__img.light-mode
+        display: block
+.why-map__img.light-mode
+    display: none
 .why-map
     &__img
         position: absolute
@@ -2679,6 +3894,7 @@
         z-index: 3
     &__user
         position: absolute
+        transition: all .3s
     &__line
         position: absolute
         z-index: -1
@@ -2724,24 +3940,36 @@
 //why-us end
 //loyalty start
 .loyalty
-    margin-top: 225px
-    margin-bottom: 60px
+    position: relative
+    padding-top: 225px
+    padding-bottom: 60px
     .block__inner
         align-items: center
+        justify-content: flex-start
+
     .block__content
         max-width: 320px
+        margin-left: 120px
     &__img
-        margin-left: -79px
         border-radius: 20px
         overflow: hidden
-        max-width: 792px
+        max-width: 600px
         width: 100%
         height: auto
     &__items
-        margin-top: 70px
+        padding-top: 70px
         display: flex
         flex-wrap: wrap
         justify-content: space-between
+
+body.theme--ligth .loyalty-item
+    background: $greyLight
+    &:hover
+        background: #FFFFFF
+        box-shadow: 8px 8px 35px rgba(54, 25, 119, 0.11)
+        .loyalty-item__heading,.loyalty-item__text
+            color: $black
+
 .loyalty-item
     position: relative
     padding: 30px
@@ -2786,15 +4014,16 @@
     &:hover::after
         animation: ball2 0.7s ease-out
         animation-fill-mode: forwards
+
     &__heading
         position: relative
         margin-bottom: 15px
         font-weight: 600
-        color: $white
+        color: var(--color-card-heading)
         z-index: 3
     &__text
         position: relative
-        color: $text
+        color: var(--color-text)
         z-index: 3
 @keyframes ball1
     0%
@@ -2806,6 +4035,7 @@
     100%
         width: 169px
         height: 169px
+
 @keyframes ball2
     0%
         width: 0
@@ -2816,11 +4046,17 @@
     100%
         width: 105px
         height: 105px
+
 //loyalty end
 //why-lose start
+
 .why-lose
+    position: relative
     padding: 150px 0
-    background: linear-gradient(135deg, #2D2F33 0%, #282A2E 51.33%, #212429 99.1%)
+    overflow: hidden
+    .block__inner
+        position: relative
+        z-index: 2
     &__images
         position: relative
     &__img
@@ -2836,11 +4072,20 @@
         position: absolute
         bottom: -70px
         right: -70px
+
+#why-lose-surfases
+    padding-left: 0
+    z-index: 1
+    left: -100px
+    top: -50px
+
 //why-lose end
 
 //the-more-the start
 .the-more-the
+    position: relative
     padding: 100px 0
+    overflow: hidden
     .block__inner
         align-items: center
     .block__content
